@@ -1,20 +1,21 @@
 ﻿using Acme.Framework.Core.Rest;
+using Acme.Test.Register;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.Login
 {
     [TestFixture]
-    public sealed class LoginFixtureTest : BaseFixture<LoginFixtureRepository>
+    public sealed class LoginFixtureTest : BaseFixture<RegisterAndLoginFixtureRepository>
     {
-        protected override string FixtureTestDataPath => $"Login\\{GetType().Name}Data.json";
+        protected override string FixtureTestDataPath => "Register\\RegisterAndLoginFixtureTestData.json";
 
         [Test]
         public void LoginSuccessfulTest()
         {
             var usersRequest = new Request(Repository.LoginResource, Method.POST);
-            usersRequest.AddParameter("email", "eve.holt@reqres.in");
-            usersRequest.AddParameter("password", "cityslicka");
+            usersRequest.AddParameter("email", Repository.Email = "eve.holt@reqres.in");
+            usersRequest.AddParameter("password", Repository.Password =  "cityslicka");
             var usersResponse = Client.Execute(usersRequest);
             Assert.AreEqual(200, (int)usersResponse.StatusCode);
         }
@@ -23,7 +24,7 @@ namespace Acme.Test.Login
         public void LoginUnsuccessfulTest()
         {
             var usersRequest = new Request(Repository.LoginResource, Method.POST);
-            usersRequest.AddParameter("email", "peter@klaven");
+            usersRequest.AddParameter("email", Repository.Email = "peter@klaven");
             var usersResponse = Client.Execute(usersRequest);
             Assert.AreEqual(400, (int)usersResponse.StatusCode);
         }

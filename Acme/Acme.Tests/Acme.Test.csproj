@@ -60,11 +60,10 @@
     <Compile Include="BaseFixtureRepository.cs" />
     <Compile Include="User\UserFixtureTest.cs" />
     <Compile Include="User\UserFixtureRepository.cs" />
-    <Compile Include="Login\LoginFixtureRepository.cs" />
+    <Compile Include="Register\RegisterAndLoginFixtureRepository.cs" />
     <Compile Include="Login\LoginFixtureTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unknown\UnknownFixtureRepository.cs" />
-    <Compile Include="Register\RegisterFixtureRepository.cs" />
     <Compile Include="Register\RegisterFixtureTest.cs" />
     <Compile Include="Unknown\UnknownFixtureTest.cs" />
   </ItemGroup>
@@ -89,14 +88,11 @@
     <None Include="User\UserFixtureTestData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Login\LoginFixtureTestData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Unknown\UnknownFixtureTestData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Register\RegisterFixtureTestData.json">
+    <None Include="Register\RegisterAndLoginFixtureTestData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
