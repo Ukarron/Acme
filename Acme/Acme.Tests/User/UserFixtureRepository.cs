@@ -7,7 +7,7 @@ namespace Acme.Test.Demo
         [JsonProperty("usersResource")]
         public string UsersResource { get; set; }
 
-        [JsonProperty]
+        [JsonProperty("morpheus")]
         public string Name { get; set; }
 
         [JsonProperty]

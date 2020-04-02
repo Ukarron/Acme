@@ -40,7 +40,7 @@ namespace Acme.Test.User
         public void CreateTest()
         {
             var usersRequest = new Request(Repository.UsersResource, Method.POST);            
-            usersRequest.AddParameter("name", Repository.Name = "morpheus");
+            usersRequest.AddParameter("name", Repository.Name);
             usersRequest.AddParameter("job", Repository.Job = "leader");
             var usersResponse = Client.Execute(usersRequest);
             Assert.AreEqual(201, (int)usersResponse.StatusCode);
@@ -50,7 +50,7 @@ namespace Acme.Test.User
         public void PutTest()
         {
             var usersRequest = new Request(Repository.UsersResource + "/2", Method.PUT);
-            usersRequest.AddParameter("name", Repository.Name = "morpheus");
+            usersRequest.AddParameter("name", Repository.Name);
             usersRequest.AddParameter("job", Repository.Job = "zion resident");
             var usersResponse = Client.Execute(usersRequest);
             Assert.AreEqual(200, (int)usersResponse.StatusCode);
@@ -60,7 +60,7 @@ namespace Acme.Test.User
         public void PatchTest()
         {
             var usersRequest = new Request(Repository.UsersResource + "/2", Method.PATCH);
-            usersRequest.AddParameter("name", Repository.Name = "morpheus");
+            usersRequest.AddParameter("name", Repository.Name);
             usersRequest.AddParameter("job", Repository.Job = "zion resident");
             var usersResponse = Client.Execute(usersRequest);
             Assert.AreEqual(200, (int)usersResponse.StatusCode);
