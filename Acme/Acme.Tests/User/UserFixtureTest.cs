@@ -1,11 +1,13 @@
 ﻿using Acme.Framework.Core.Rest;
 using Acme.Test.Demo;
+using Allure.NUnit.Attributes;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.User
 {
     [TestFixture]
+    [AllureSuite("API")]
     public sealed class UserFixtureTest : BaseFixture<UserFixtureRepository>
     {
         protected override string FixtureTestDataPath => $"User\\{GetType().Name}Data.json";

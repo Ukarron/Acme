@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Allure.Commons;
+using Newtonsoft.Json;
 
 namespace Acme.Test
 {

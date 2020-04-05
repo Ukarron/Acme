@@ -1,10 +1,12 @@
 ﻿using Acme.Framework.Core.Rest;
+using Allure.NUnit.Attributes;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.Unknown
 {
     [TestFixture]
+    [AllureSuite("API")]
     public sealed class UnknownFixtureTest : BaseFixture<UnknownFixtureRepository>
     {
         protected override string FixtureTestDataPath => $"Unknown\\{GetType().Name}Data.json";

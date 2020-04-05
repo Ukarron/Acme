@@ -1,10 +1,12 @@
 ﻿using Acme.Framework.Core.Rest;
+using Allure.NUnit.Attributes;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.Register
 {
     [TestFixture]
+    [AllureSuite("API")]
     public sealed class RegisterFixtureTest : BaseFixture<RegisterAndLoginFixtureRepository>
     {
         protected override string FixtureTestDataPath => $"Register\\RegisterAndLoginFixtureTestData.json";

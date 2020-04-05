@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Allure.NUnit.Attributes;
+using RestSharp;
 using System.Net;
 
 namespace Acme.Framework.Core.Rest
@@ -13,6 +14,7 @@ namespace Acme.Framework.Core.Rest
             _wrapper.CookieContainer = new CookieContainer();
         }
 
+        [AllureStep]
         public IRestResponse Execute(Request request)
         {
             var response = _wrapper.Execute(request.Wrapper);
