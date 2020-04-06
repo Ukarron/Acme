@@ -1,18 +1,21 @@
 ﻿using Acme.Framework.Core.Rest;
 using Acme.Test.Register;
-using Allure.NUnit.Attributes;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.Login
 {
     [TestFixture]
+    [AllureNUnit]
     [AllureSuite("API")]
     public sealed class LoginFixtureTest : BaseFixture<RegisterAndLoginFixtureRepository>
     {
         protected override string FixtureTestDataPath => "Register\\RegisterAndLoginFixtureTestData.json";
 
         [Test]
+        [AllureTag("Login resource")]
         public void LoginSuccessfulTest()
         {
             var usersRequest = new Request(Repository.LoginResource, Method.POST);
@@ -23,6 +26,7 @@ namespace Acme.Test.Login
         }
 
         [Test]
+        [AllureTag("Login resource")]
         public void LoginUnsuccessfulTest()
         {
             var usersRequest = new Request(Repository.LoginResource, Method.POST);

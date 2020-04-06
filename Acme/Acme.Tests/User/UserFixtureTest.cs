@@ -1,18 +1,21 @@
 ﻿using Acme.Framework.Core.Rest;
 using Acme.Test.Demo;
-using Allure.NUnit.Attributes;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using RestSharp;
 
 namespace Acme.Test.User
 {
     [TestFixture]
+    [AllureNUnit]
     [AllureSuite("API")]
     public sealed class UserFixtureTest : BaseFixture<UserFixtureRepository>
     {
         protected override string FixtureTestDataPath => $"User\\{GetType().Name}Data.json";
 
         [Test]
+        [AllureTag("User resource")]
         public void GetListUsersTest()
         {
             var usersRequest = new Request(Repository.UsersResource, Method.GET);
@@ -21,6 +24,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void GetSingleUserTest()
         {
             var resource = Repository.UsersResource + "/2";
@@ -30,6 +34,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void SingleUserNotFoundTest()
         {
             var resource = Repository.UsersResource + "/23";
@@ -39,6 +44,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void CreateTest()
         {
             var usersRequest = new Request(Repository.UsersResource, Method.POST);            
@@ -49,6 +55,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void PutTest()
         {
             var usersRequest = new Request(Repository.UsersResource + "/2", Method.PUT);
@@ -59,6 +66,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void PatchTest()
         {
             var usersRequest = new Request(Repository.UsersResource + "/2", Method.PATCH);
@@ -69,6 +77,7 @@ namespace Acme.Test.User
         }
 
         [Test]
+        [AllureTag("User resource")]
         public void DeleteTest()
         {
             var resource = Repository.UsersResource + "/2";

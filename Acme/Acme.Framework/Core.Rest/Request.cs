@@ -1,5 +1,4 @@
-﻿using Allure.NUnit.Attributes;
-using RestSharp;
+﻿using RestSharp;
 
 namespace Acme.Framework.Core.Rest
 {
@@ -12,7 +11,6 @@ namespace Acme.Framework.Core.Rest
             Wrapper = new RestRequest(resource, method);
         }
 
-        [AllureStep]
         public void AddParameter(string name, object value)
         {
             Wrapper.AddParameter(name, value);
