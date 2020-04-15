@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="BaseFixture.cs" />
     <Compile Include="BaseFixtureRepository.cs" />
+    <Compile Include="UITests\GoogleHomePageTest.cs" />
     <Compile Include="User\UserFixtureTest.cs" />
     <Compile Include="User\UserFixtureRepository.cs" />
     <Compile Include="Register\RegisterAndLoginFixtureRepository.cs" />
@@ -122,6 +123,9 @@
   <ItemGroup>
     <PackageReference Include="NUnit.Allure">
       <Version>1.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver">
+      <Version>81.0.4044.6900</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
