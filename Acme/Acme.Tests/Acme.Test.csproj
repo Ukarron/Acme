@@ -105,6 +105,9 @@
     <PackageReference Include="NUnit.Allure">
       <Version>1.0.9</Version>
     </PackageReference>
+    <PackageReference Include="NUnit.ConsoleRunner">
+      <Version>3.11.1</Version>
+    </PackageReference>
     <PackageReference Include="NUnit3TestAdapter">
       <Version>3.16.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
