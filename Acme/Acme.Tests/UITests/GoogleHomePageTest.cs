@@ -4,10 +4,10 @@ using System.Threading;
 
 namespace Acme.Test.UITests
 {
-   // [TestFixture]
+    [TestFixture]
     public class GoogleHomePageTest
     {
-        //[SetUp]
+        [SetUp]
         public void SetUpTest()
         {
             DriverManager.Current = Driver.GetForRemout();
@@ -15,8 +15,8 @@ namespace Acme.Test.UITests
             DriverManager.Current.MaximizeWindow();
         }
 
-        //[Test]
-        [Ignore("")]
+        [Test]
+        [Ignore("Not implemented connection to docker")]
         public void GoogleHomeTest()
         {
             GooglePages.HomePage.EnterSearchText("softserve");
@@ -24,7 +24,7 @@ namespace Acme.Test.UITests
             GooglePages.HomePage.ClickSearchInGoogleInput();
         }
 
-        //[TearDown]
+        [TearDown]
         public void TearDownTest()
         {
             DriverManager.Current.Quit();
