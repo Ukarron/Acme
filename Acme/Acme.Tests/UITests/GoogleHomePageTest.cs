@@ -10,7 +10,7 @@ namespace Acme.Test.UITests
         [SetUp]
         public void SetUpTest()
         {
-            DriverManager.Current = Driver.GetForRemout();
+            DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
             DriverManager.Current.Url = "https://www.google.com.ua/";
             DriverManager.Current.MaximizeWindow();
         }

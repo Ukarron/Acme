@@ -41,7 +41,7 @@ namespace Acme.UI
         public static Driver GetForRemout()
         {
             var option = new ChromeOptions();
-            var url = new Uri("http://192.168.0.76:5555/");
+            var url = new Uri("http://192.168.0.76:5555/wd/hub");
             var driver = new Driver(new RemoteWebDriver(url, option));
             return driver;
         }
