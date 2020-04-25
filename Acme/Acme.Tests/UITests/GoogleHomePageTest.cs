@@ -15,8 +15,8 @@ namespace Acme.Test.UITests
             DriverManager.Current.MaximizeWindow();
         }
 
-        //[Test]
-        //[Ignore("Not implemented connection to docker")]
+        [Test]
+        [Ignore("Not implemented connection to docker")]
         public void GoogleHomeTest()
         {
             GooglePages.HomePage.EnterSearchText("softserve");
