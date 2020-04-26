@@ -40,17 +40,8 @@ namespace Acme.UI
 
         public static Driver GetForRemout()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.BrowserVersion = "81.0.4044.92";
-            options.PageLoadStrategy = PageLoadStrategy.Default;
-            options.AddAdditionalCapability("platform", "LINUX", true);
-            options.AddAdditionalCapability("version", "latest", true);
-            options.AddAdditionalCapability("Ukarron", "USERNAME", true);
-            options.AddAdditionalCapability("123", "ACCESS_KEY", true);
-            options.AddAdditionalCapability("maxInstances", 1);
-            options.AddAdditionalCapability("seleniumProtocol", "WebDriver");
-
-            var url = new Uri("http://192.168.0.76:5555/wd/hub");
+            FirefoxOptions options = new FirefoxOptions();
+            var url = new Uri("http://192.168.0.76:4444/wd/hub");
             var driver = new Driver(new RemoteWebDriver(url, options));
             return driver;
         }

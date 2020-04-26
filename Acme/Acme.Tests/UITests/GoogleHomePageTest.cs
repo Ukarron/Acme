@@ -20,7 +20,7 @@ namespace Acme.Test.UITests
         public void GoogleHomeTest()
         {
             GooglePages.HomePage.EnterSearchText("softserve");
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             GooglePages.HomePage.ClickSearchInGoogleInput();
         }
 
