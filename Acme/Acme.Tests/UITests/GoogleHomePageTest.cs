@@ -10,13 +10,12 @@ namespace Acme.Test.UITests
         [SetUp]
         public void SetUpTest()
         {
-            DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
+            DriverManager.Current = Driver.GetForRemout();
             DriverManager.Current.Url = "https://www.google.com.ua/";
             DriverManager.Current.MaximizeWindow();
         }
 
         [Test]
-        [Ignore("Not implemented connection to docker")]
         public void GoogleHomeTest()
         {
             GooglePages.HomePage.EnterSearchText("softserve");
