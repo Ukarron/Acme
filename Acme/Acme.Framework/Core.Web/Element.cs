@@ -4,21 +4,17 @@ namespace Acme.UI
 {
     public abstract class Element
     {
-        internal Search SearchWrapper;
+        internal Locator SearchWrapper;
 
-        internal IWebElement Wrapper => DriverManager.Current.FindElement(SearchWrapper);
+        internal IWebElement Wrapper => DriverManager.Current.FindElement(SearchWrapper);        
 
-        public string InnerText => Wrapper.Text;
-
-        public void Click()
+        public void WaitAndClick()
         {
+            DriverManager.Current.WaitForVisibilityOfElement(this);
             Wrapper.Click();
         }
 
-    }
-
-    public class AElement : Element
-    {
+        public string InnerText => Wrapper.Text;        
     }
 
     public class InputElement : Element

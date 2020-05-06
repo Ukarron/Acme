@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GooglePages.cs" />
-    <Compile Include="HomePage.cs" />
+    <Compile Include="GoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

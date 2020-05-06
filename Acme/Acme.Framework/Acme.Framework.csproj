@@ -56,7 +56,7 @@
     <Compile Include="Core.Web\DriverManager.cs" />
     <Compile Include="Core.Web\Element.cs" />
     <Compile Include="Core.Web\ElementFactory.cs" />
-    <Compile Include="Core.Web\Search.cs" />
+    <Compile Include="Core.Web\Locator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

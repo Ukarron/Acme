@@ -2,6 +2,6 @@
 {
     public static class GooglePages
     {
-        public static HomePage HomePage => new HomePage();
+        public static GoogleHomePage HomePage => new GoogleHomePage();
     }
 }

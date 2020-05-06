@@ -2,7 +2,7 @@
 {
     public static class ElementFactory
     {
-        public static TElement Create<TElement>(Search search) where TElement : Element, new()
+        public static TElement Create<TElement>(Locator search) where TElement : Element, new()
         {
             var element = new TElement
             {

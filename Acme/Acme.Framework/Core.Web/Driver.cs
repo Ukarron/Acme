@@ -5,19 +5,20 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 namespace Acme.UI
 {
     public sealed class Driver
     {
-        private readonly IWebDriver _wrapper;
-
+        private readonly IWebDriver _driverWrapper;
         private readonly WebDriverWait _wait;
+        private const double Default_Wait_Time = 60;
 
         private Driver(IWebDriver driver)
         {
-            _wrapper = driver;
-            _wait = new WebDriverWait(_wrapper, TimeSpan.FromSeconds(10));
+            _driverWrapper = driver;
+            _wait = new WebDriverWait(_driverWrapper, TimeSpan.FromSeconds(Default_Wait_Time));
         }
 
         public static Driver GetFor(BrowserType browserType)
@@ -48,24 +49,89 @@ namespace Acme.UI
 
         public string Url
         {
-            get => _wrapper.Url;
-            set => _wrapper.Url = value;
+            get => _driverWrapper.Url;
+            set => _driverWrapper.Url = value;
         }
 
-        internal IWebElement FindElement(Search search)
+        internal IWebElement FindElement(Locator search)
         {
-            var element = _wrapper.FindElement(search.Wrapper);
+            var element = _driverWrapper.FindElement(search.ElementLocator);
             return element;
+        }
+
+        /// <summary> An expectation for checking that an element is either invisible or not present on the DOM. </summary>
+        //public void WaitForInvisibilityOfElement(Element element)
+        //{
+        //    //Logger.Trace($"Waiting for invisibility of '{element}' element...");
+        //    //Thread.Sleep(NegativeWaitDelayInMs);
+        //    //_wait.Until(WaitConditions.InvisibilityOfElement(element.Locator.Wrapper, element.Parent));
+        //}
+
+        internal static Func<IWebDriver, bool> InvisibilityOfElement(By locator)
+        {
+            return (driver) =>
+            {
+                try
+                {
+                    var element = driver.FindElement(locator);
+                    return !element.Displayed;
+                }
+                catch (NoSuchElementException)
+                {
+                    return true;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return true;
+                }
+            };
+        }
+
+        internal static Func<IWebDriver, bool> VisibilityOfElement(By locator)
+        {
+            return (driver) =>
+            {
+                try
+                {
+                    var element = driver.FindElement(locator);
+                    return element.Displayed;
+                }
+                catch (NoSuchElementException)
+                {
+                    return true;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return true;
+                }
+            };
+        }
+
+        public void WaitForInvisibilityOfElement(Element locator)
+        {
+            Thread.Sleep(500);
+            _wait.Until(InvisibilityOfElement(locator.SearchWrapper.ElementLocator));            
+        }
+
+        public void WaitForVisibilityOfElement(Element locator)
+        {
+            Thread.Sleep(500);
+            _wait.Until(VisibilityOfElement(locator.SearchWrapper.ElementLocator));
+        }
+
+        public string GetTitle()
+        {
+            return _driverWrapper.Title;
         }
 
         public void MaximizeWindow()
         {
-            _wrapper.Manage().Window.Maximize();
+            _driverWrapper.Manage().Window.Maximize();
         }
 
         public void Quit()
         {
-            _wrapper.Quit();
+            _driverWrapper.Quit();
         }
     }
 
