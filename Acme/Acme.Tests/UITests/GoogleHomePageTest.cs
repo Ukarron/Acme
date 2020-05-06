@@ -15,8 +15,10 @@ namespace Acme.Test.UITests
         }
 
         [Test]
+        [Ignore("")]
         public void GoogleHomeTest()
         {
+
             GooglePages.HomePage.EnterSearchText("SoftServe");
             GooglePages.HomePage.ClickSearchInGoogleInput();
         }

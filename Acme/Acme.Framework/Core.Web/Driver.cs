@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -14,6 +15,7 @@ namespace Acme.UI
         private readonly IWebDriver _driverWrapper;
         private readonly WebDriverWait _wait;
         private const double Default_Wait_Time = 60;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private Driver(IWebDriver driver)
         {
@@ -69,6 +71,8 @@ namespace Acme.UI
 
         internal static Func<IWebDriver, bool> InvisibilityOfElement(By locator)
         {
+            Logger.Trace($"Waiting for invisibility of '{locator}' element...");
+
             return (driver) =>
             {
                 try
