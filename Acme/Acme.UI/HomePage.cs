@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-
-namespace Acme.UI
+﻿namespace Acme.UI
 {
     public class HomePage
     {

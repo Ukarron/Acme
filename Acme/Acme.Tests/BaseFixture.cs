@@ -34,11 +34,9 @@ namespace Acme.Test
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                //Screenshot screen = ((ITakesScreenshot)DriverManager.Current).GetScreenshot();
-                //var path = Path.Combine(TestContext.CurrentContext.WorkDirectory);
-                //screen.SaveAsFile(Path.Combine(TestContext.CurrentContext.WorkDirectory, "Image.png"), ScreenshotImageFormat.Png);
-
-                //AllureLifecycle.Instance.AddAttachment(Path.Combine(TestContext.CurrentContext.WorkDirectory, "Image.png"));
+                Screenshot screen = ((ITakesScreenshot)DriverManager.Current.GetDriver()).GetScreenshot();
+                var path = Path.Combine(TestContext.CurrentContext.WorkDirectory);
+                screen.SaveAsFile(Path.Combine(TestContext.CurrentContext.WorkDirectory, "Image.png"), ScreenshotImageFormat.Png);
             }
 
             DriverManager.Current.Quit();

@@ -128,6 +128,11 @@ namespace Acme.UI
             return _driverWrapper.Title;
         }
 
+        public IWebDriver GetDriver()
+        {
+            return _driverWrapper;
+        }
+
         public void OpenUrl(string url)
         {
             _driverWrapper.Navigate().GoToUrl(url);
