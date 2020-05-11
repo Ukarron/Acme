@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Acme.UI
+﻿namespace Acme.UI
 {
     public static class OpenCart
     {
-        public static HomePage HomePage => new HomePage(); 
+        public static HomePage HomePage => new HomePage();
+        public static TopBar TopBar => new TopBar();
+        public static MyAccountDropDown MyAccountDropDown => new MyAccountDropDown();
     }
 }

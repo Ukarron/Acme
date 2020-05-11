@@ -15,12 +15,8 @@ namespace Acme.UI
         }        
     }
 
-    public class InputElement : Element
+    public class AElement : Element
     {
-        public void EnterText(string text)
-        {
-            Wrapper.SendKeys(text);
-        }
     }
 
     public class ATag : Element
@@ -31,4 +27,16 @@ namespace Acme.UI
             return innerText;
         }
     }
+
+    public class InputElement : Element
+    {
+        public void EnterText(string text)
+        { 
+            Wrapper.SendKeys(text);
+        }
+    }    
+
+    public class Li : Element
+    {
+    }    
 }

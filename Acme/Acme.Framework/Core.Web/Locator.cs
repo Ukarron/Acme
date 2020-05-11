@@ -23,6 +23,18 @@ namespace Acme.UI
             return new Locator(search);
         }
 
+        public static Locator LinkText(string linkText)
+        {
+            var search = By.LinkText(linkText);
+            return new Locator(search);
+        }
+
+        public static Locator ClassName(string className)
+        {
+            var search = By.ClassName(className);
+            return new Locator(search);
+        }
+
         public static Locator Css(string css)
         {
             var search = By.CssSelector(css);

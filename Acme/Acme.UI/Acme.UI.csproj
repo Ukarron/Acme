@@ -55,11 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GooglePages.cs" />
     <Compile Include="GoogleHomePage.cs" />
     <Compile Include="HomePage.cs" />
+    <Compile Include="MyAccountDropDown.cs" />
     <Compile Include="OpenCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.Framework\Acme.Framework.csproj">

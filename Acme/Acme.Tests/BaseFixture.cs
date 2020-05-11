@@ -1,4 +1,5 @@
 ﻿using Acme.Framework.Core.Rest;
+using Acme.UI;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
@@ -23,6 +24,12 @@ namespace Acme.Test
             fixtureJson.Merge(baseJson);
             Repository = fixtureJson.ToObject<TBaseRepository>();
             Client = new Client(Repository.BaseUrl);
+        }
+
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
+        {
+            DriverManager.Current.Quit();
         }
     }
 }

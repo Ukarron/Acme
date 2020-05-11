@@ -1,4 +1,5 @@
-﻿using Acme.UI;
+﻿using Acme.Test.Register;
+using Acme.UI;
 using NUnit.Allure.Attributes;
 using NUnit.Allure.Core;
 using NUnit.Framework;
@@ -8,11 +9,10 @@ namespace Acme.Test.UITests
     [TestFixture]
     [AllureNUnit]
     [AllureSuite("UI")]
-    public class OpenCartHomePage : BaseFixture<BaseFixtureRepository>
+    public class OpenCartHomePage : BaseFixture<RegisterAndLoginFixtureRepository>
     {
         private const string EXPECTED_TITLE = "Your Store";
-
-        protected override string FixtureTestDataPath => throw new System.NotImplementedException();
+        protected override string FixtureTestDataPath => "Register\\RegisterAndLoginFixtureTestData.json";
 
         [SetUp]
         public void SetUpTest()
@@ -26,13 +26,9 @@ namespace Acme.Test.UITests
         public void OpenCartHomePageTest()
         {
             OpenCart.HomePage.Open();
+            OpenCart.TopBar.ClickMyAccountIcon();
+            OpenCart.MyAccountDropDown.ClickLogin();
             Assert.AreEqual(EXPECTED_TITLE, OpenCart.HomePage.GetTitle());
-        }
-
-        [TearDown]
-        public void TearDownTest()
-        {
-            DriverManager.Current.Quit();
         }
     }
 }
