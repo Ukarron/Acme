@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="GoogleHomePage.cs" />
     <Compile Include="HomePage.cs" />
+    <Compile Include="LoginPage.cs" />
     <Compile Include="MyAccountDropDown.cs" />
     <Compile Include="OpenCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

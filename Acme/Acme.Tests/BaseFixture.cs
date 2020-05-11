@@ -1,7 +1,10 @@
 ﻿using Acme.Framework.Core.Rest;
 using Acme.UI;
+using Allure.Commons;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using System;
 using System.IO;
 
@@ -29,6 +32,15 @@ namespace Acme.Test
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                //Screenshot screen = ((ITakesScreenshot)DriverManager.Current).GetScreenshot();
+                //var path = Path.Combine(TestContext.CurrentContext.WorkDirectory);
+                //screen.SaveAsFile(Path.Combine(TestContext.CurrentContext.WorkDirectory, "Image.png"), ScreenshotImageFormat.Png);
+
+                //AllureLifecycle.Instance.AddAttachment(Path.Combine(TestContext.CurrentContext.WorkDirectory, "Image.png"));
+            }
+
             DriverManager.Current.Quit();
         }
     }
