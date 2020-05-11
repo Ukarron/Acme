@@ -12,9 +12,7 @@ namespace Acme.UI
         {
             DriverManager.Current.WaitForVisibilityOfElement(this);
             Wrapper.Click();
-        }
-
-        public string InnerText => Wrapper.Text;        
+        }        
     }
 
     public class InputElement : Element
@@ -22,6 +20,15 @@ namespace Acme.UI
         public void EnterText(string text)
         {
             Wrapper.SendKeys(text);
+        }
+    }
+
+    public class ATag : Element
+    {
+        public string GetText()
+        {
+            var innerText = Wrapper.Text;
+            return innerText;
         }
     }
 }

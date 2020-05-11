@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +57,8 @@
   <ItemGroup>
     <Compile Include="GooglePages.cs" />
     <Compile Include="GoogleHomePage.cs" />
+    <Compile Include="HomePage.cs" />
+    <Compile Include="OpenCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

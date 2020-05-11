@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="BaseFixture.cs" />
     <Compile Include="BaseFixtureRepository.cs" />
-    <Compile Include="UITests\GoogleHomePageTest.cs" />
+    <Compile Include="UITests\OpenCartHomePage.cs" />
     <Compile Include="User\UserFixtureTest.cs" />
     <Compile Include="User\UserFixtureRepository.cs" />
     <Compile Include="Register\RegisterAndLoginFixtureRepository.cs" />

@@ -38,7 +38,7 @@ namespace Acme.UI
 
                 default:
                     throw new Exception("There is no such browser.");
-            }
+            }            
         }
 
         public static Driver GetForRemout()
@@ -126,6 +126,11 @@ namespace Acme.UI
         public string GetTitle()
         {
             return _driverWrapper.Title;
+        }
+
+        public void OpenUrl(string url)
+        {
+            _driverWrapper.Navigate().GoToUrl(url);
         }
 
         public void MaximizeWindow()
