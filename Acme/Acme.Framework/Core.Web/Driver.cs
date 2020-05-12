@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
@@ -43,7 +44,10 @@ namespace Acme.UI
 
         public static Driver GetForRemout()
         {
-            FirefoxOptions options = new FirefoxOptions();
+            ChromeOptions options = new ChromeOptions();
+            options.AcceptInsecureCertificates = true;
+            options.AddArgument("ignore-sertificate");
+
             var url = new Uri("http://192.168.0.76:4444/wd/hub");
             var driver = new Driver(new RemoteWebDriver(url, options));
             return driver;
@@ -59,6 +63,11 @@ namespace Acme.UI
         {
             var element = _driverWrapper.FindElement(search.ElementLocator);
             return element;
+        }
+
+        public string GetPageSource()
+        {
+            return _driverWrapper.PageSource;
         }
 
         /// <summary> An expectation for checking that an element is either invisible or not present on the DOM. </summary>

@@ -29,8 +29,8 @@ namespace Acme.Test.UITests
             OpenCart.LoginPage.Open();
             OpenCart.LoginPage.EnterEmail(ConfigurationManager.AppSettings["BaseEmail"]);
             OpenCart.LoginPage.EnterPassword(ConfigurationManager.AppSettings["BasePassword"]);
+            var source = DriverManager.Current.GetPageSource();
             OpenCart.LoginPage.ClickLoginButton();
-            //Assert.AreEqual(EXPECTED_TITLE, OpenCart.HomePage.GetTitle());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Acme.UI
         {
             DriverManager.Current.WaitForVisibilityOfElement(this);
             Wrapper.Click();
-        }        
+        }
     }
 
     public class AElement : Element

@@ -6,7 +6,7 @@ namespace Acme.UI
     {
         private InputElement EmailField => ElementFactory.Create<InputElement>(Locator.Id("input-email"));
         private InputElement PasswordField => ElementFactory.Create<InputElement>(Locator.Id("input-password"));
-        private InputElement LoginButton => ElementFactory.Create<InputElement>(Locator.Css("input.btn.btn-primary"));
+        private InputElement LoginButton => ElementFactory.Create<InputElement>(Locator.Xpath("//input[@class='btn btn-primary']"));
 
         public void Open()
         {
