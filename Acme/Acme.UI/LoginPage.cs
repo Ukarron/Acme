@@ -4,28 +4,51 @@ namespace Acme.UI
 {
     public class LoginPage
     {
-        private InputElement EmailField => ElementFactory.Create<InputElement>(Locator.Id("input-email"));
-        private InputElement PasswordField => ElementFactory.Create<InputElement>(Locator.Id("input-password"));
-        private InputElement LoginButton => ElementFactory.Create<InputElement>(Locator.Xpath("//input[@class='btn btn-primary']"));
+        private InputElement EmailField => ElementFactory.Create<InputElement>(Locator.Id("user_login"));
+        private InputElement PasswordField => ElementFactory.Create<InputElement>(Locator.Id("user_pass"));
+        private InputElement RememberMeCheckbox => ElementFactory.Create<InputElement>(Locator.Id("rememberme"));
+        private InputElement LoginButton => ElementFactory.Create<InputElement>(Locator.Id("wp-submit"));
 
-        public void Open()
+        public LoginPage Login(bool staySignedIn = false)
         {
-            DriverManager.Current.OpenUrl(ConfigurationManager.AppSettings["RemoteUrl"]);
-        }
+            EnterLogin(ConfigurationManager.AppSettings["BaseLogin"])
+                .EnterPassword(ConfigurationManager.AppSettings["BasePassword"])
+                .StaySigned(staySignedIn)
+                .ClickLoginButton();
 
-        public LoginPage EnterEmail(string email)
-        {
-            EmailField.EnterText(email);
             return this;
         }
 
-        public LoginPage EnterPassword(string password)
+        public LoginPage LoginAs(string username, string password, bool staySignedIn = false)
+        {
+            EnterLogin(username)
+                .EnterPassword(password)
+                .StaySigned(staySignedIn)
+                .ClickLoginButton();
+
+            return this;
+        }
+
+        private LoginPage EnterLogin(string username)
+        {
+            EmailField.EnterText(username);
+            return this;
+        }
+
+        private LoginPage EnterPassword(string password)
         {
             PasswordField.EnterText(password);
             return this;
         }
 
-        public LoginPage ClickLoginButton()
+        private LoginPage StaySigned(bool staySignedIn = false)
+        {
+            if (staySignedIn)
+                RememberMeCheckbox.WaitAndClick();
+            return this;
+        }
+
+        private LoginPage ClickLoginButton()
         {
             LoginButton.WaitAndClick();
             return this;

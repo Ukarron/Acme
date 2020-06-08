@@ -13,30 +13,34 @@ namespace Acme.UI
             DriverManager.Current.WaitForVisibilityOfElement(this);
             Wrapper.Click();
         }
+
+        public string GetText()
+        {
+            DriverManager.Current.WaitForVisibilityOfElement(this);
+            var text = Wrapper.Text;
+            return text;
+        }
     }
 
     public class AElement : Element
     {
-    }
-
-    public class ATag : Element
-    {
-        public string GetText()
+        public void WaitAndMouseOver()
         {
-            var innerText = Wrapper.Text;
-            return innerText;
+            DriverManager.Current.WaitForVisibilityOfElement(this);
+            DriverManager.Current.MouseOver(this);
         }
     }
 
     public class InputElement : Element
     {
         public void EnterText(string text)
-        { 
+        {
+            DriverManager.Current.WaitForVisibilityOfElement(this);
             Wrapper.SendKeys(text);
         }
-    }    
+    }
 
-    public class Li : Element
-    {
-    }    
+    public class Span : Element
+    {        
+    }
 }

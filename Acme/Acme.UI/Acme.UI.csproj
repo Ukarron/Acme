@@ -55,13 +55,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GoogleHomePage.cs" />
-    <Compile Include="HomePage.cs" />
+    <Compile Include="Admin\PersonalMenu.cs" />
     <Compile Include="LoginPage.cs" />
-    <Compile Include="MyAccountDropDown.cs" />
-    <Compile Include="OpenCart.cs" />
+    <Compile Include="WordPressUA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TopBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.Framework\Acme.Framework.csproj">
@@ -71,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InternetStore\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

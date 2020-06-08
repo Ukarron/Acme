@@ -3,8 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
@@ -16,11 +16,13 @@ namespace Acme.UI
         private readonly IWebDriver _driverWrapper;
         private readonly WebDriverWait _wait;
         private const double Default_Wait_Time = 60;
+        private Actions _action;
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         private Driver(IWebDriver driver)
         {
             _driverWrapper = driver;
+            _action = new Actions(driver);
             _wait = new WebDriverWait(_driverWrapper, TimeSpan.FromSeconds(Default_Wait_Time));
         }
 
@@ -46,7 +48,11 @@ namespace Acme.UI
         {
             ChromeOptions options = new ChromeOptions();
             options.AcceptInsecureCertificates = true;
-            options.AddArgument("ignore-sertificate");
+            options.AddArgument("ignore-sertificate-errors");
+
+            Proxy proxy = new Proxy();
+            proxy.HttpProxy = proxy.SslProxy = "192.168.0.76:8080";
+            options.Proxy = proxy;
 
             var url = new Uri("http://192.168.0.76:4444/wd/hub");
             var driver = new Driver(new RemoteWebDriver(url, options));
@@ -76,7 +82,7 @@ namespace Acme.UI
         //    //Logger.Trace($"Waiting for invisibility of '{element}' element...");
         //    //Thread.Sleep(NegativeWaitDelayInMs);
         //    //_wait.Until(WaitConditions.InvisibilityOfElement(element.Locator.Wrapper, element.Parent));
-        //}
+        //}        
 
         internal static Func<IWebDriver, bool> InvisibilityOfElement(By locator)
         {
@@ -118,6 +124,11 @@ namespace Acme.UI
                     return true;
                 }
             };
+        }
+
+        public void MouseOver(Element locator)
+        {
+            _action.MoveToElement(locator.Wrapper).Perform();
         }
 
         public void WaitForInvisibilityOfElement(Element locator)

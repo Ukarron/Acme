@@ -5,6 +5,7 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
+using System.Configuration;
 using System.IO;
 
 namespace Acme.Test
@@ -26,17 +27,30 @@ namespace Acme.Test
             fixtureJson.Merge(baseJson);
             Repository = fixtureJson.ToObject<TBaseRepository>();
             Client = new Client(Repository.BaseUrl);
+
+            if (ConfigurationManager.AppSettings["RunRemotely"].Equals("true"))
+            {
+                DriverManager.Current = Driver.GetForRemout();
+                DriverManager.Current.OpenUrl(ConfigurationManager.AppSettings["RemoteUrl"]);
+            }
+            else
+            {
+                DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
+                DriverManager.Current.OpenUrl(ConfigurationManager.AppSettings["LocalUrl"]);
+            }
+
+            DriverManager.Current.MaximizeWindow();
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            //if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            //{
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
                 Screenshot screen = ((ITakesScreenshot)DriverManager.Current.GetDriver()).GetScreenshot();
                 var path = Path.Combine(TestContext.CurrentContext.WorkDirectory);
                 screen.SaveAsFile(Path.Combine(path, "Fail.png"), ScreenshotImageFormat.Png);
-            //}
+            }
 
             DriverManager.Current.Quit();
         }
