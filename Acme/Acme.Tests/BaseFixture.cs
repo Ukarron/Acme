@@ -5,7 +5,6 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
-using System.Configuration;
 using System.IO;
 
 namespace Acme.Test
@@ -14,10 +13,10 @@ namespace Acme.Test
     public abstract class BaseFixture<TBaseRepository> where TBaseRepository : BaseFixtureRepository
     {
         private const string BaseTestDataPath = "BaseFixtureData.json";
-
+        protected readonly string BaseUrl = "http://wordpress.ua/";
         protected abstract string FixtureTestDataPath { get; }
         protected TBaseRepository Repository { get; private set; }
-        protected Client Client { get; private set; }
+        protected Client Client { get; private set; }        
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -26,20 +25,7 @@ namespace Acme.Test
             var fixtureJson = JObject.Parse(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, FixtureTestDataPath)));
             fixtureJson.Merge(baseJson);
             Repository = fixtureJson.ToObject<TBaseRepository>();
-            Client = new Client(Repository.BaseUrl);
-
-            if (ConfigurationManager.AppSettings["RunRemotely"].Equals("true"))
-            {
-                DriverManager.Current = Driver.GetForRemout();
-                DriverManager.Current.OpenUrl(ConfigurationManager.AppSettings["RemoteUrl"]);
-            }
-            else
-            {
-                DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
-                DriverManager.Current.OpenUrl(ConfigurationManager.AppSettings["LocalUrl"]);
-            }
-
-            DriverManager.Current.MaximizeWindow();
+            Client = new Client(Repository.BaseUrl);            
         }
 
         [OneTimeTearDown]

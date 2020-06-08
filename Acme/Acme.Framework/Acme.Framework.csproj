@@ -59,6 +59,7 @@
     <Compile Include="Core.Web\ElementFactory.cs" />
     <Compile Include="Core.Web\Locator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NLog">

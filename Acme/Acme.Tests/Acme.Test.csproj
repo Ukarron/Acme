@@ -54,6 +54,7 @@
     <Compile Include="BaseFixture.cs" />
     <Compile Include="BaseFixtureRepository.cs" />
     <Compile Include="UITests\VerifyThatUserCanLogin.cs" />
+    <Compile Include="UITests\VerifyThatUserCanOpenInternetStoreHomePage.cs" />
     <Compile Include="User\UserFixtureTest.cs" />
     <Compile Include="User\UserFixtureRepository.cs" />
     <Compile Include="Register\RegisterAndLoginFixtureRepository.cs" />
@@ -125,6 +126,9 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver">
       <Version>83.0.4103.3900</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

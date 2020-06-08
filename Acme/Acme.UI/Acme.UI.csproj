@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\PersonalMenu.cs" />
+    <Compile Include="InternetStore\HomePage.cs" />
     <Compile Include="LoginPage.cs" />
+    <Compile Include="UrlManager.cs" />
     <Compile Include="WordPressUA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,8 +71,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InternetStore\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

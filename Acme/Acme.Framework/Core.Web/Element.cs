@@ -43,4 +43,8 @@ namespace Acme.UI
     public class Span : Element
     {        
     }
+
+    public class H1 : Element
+    {
+    }
 }

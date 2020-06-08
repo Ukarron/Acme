@@ -18,12 +18,14 @@ namespace Acme.Test.UITests
         [AllureTag("Verify if user can login into the application")]
         public void VerifyThatUserCanLoginTest()
         {
-            WordPressUA.LoginPage.Login();
+            WordPressUA.LoginPage.Login(UrlManager.LoginPage(BaseUrl));
 
             WordPressUA.PersonalMenu.Expand();
 
-            Assert.AreEqual(EXPECTED_USERNAME, WordPressUA.PersonalMenu.GetUsername(), $"Incorrect username, should be {0}, but was {1}",
-                EXPECTED_USERNAME, WordPressUA.PersonalMenu.GetUsername());
+            var actualUsername = WordPressUA.PersonalMenu.GetUsername();
+
+            Assert.AreEqual(EXPECTED_USERNAME, actualUsername, $"Incorrect username, should be {0}, but was {1}",
+                EXPECTED_USERNAME, actualUsername);
         }
     }
 }

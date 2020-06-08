@@ -1,4 +1,5 @@
 ﻿using Acme.UI.Admin;
+using Acme.UI.InternetStore;
 
 namespace Acme.UI
 {
@@ -6,5 +7,6 @@ namespace Acme.UI
     {
         public static LoginPage LoginPage => new LoginPage();
         public static PersonalMenu PersonalMenu => new PersonalMenu();
+        public static HomePage HomePage => new HomePage();
     }
 }

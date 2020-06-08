@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using Acme.Test;
+using System.Configuration;
 
 namespace Acme.UI
 {
@@ -9,8 +10,12 @@ namespace Acme.UI
         private InputElement RememberMeCheckbox => ElementFactory.Create<InputElement>(Locator.Id("rememberme"));
         private InputElement LoginButton => ElementFactory.Create<InputElement>(Locator.Id("wp-submit"));
 
-        public LoginPage Login(bool staySignedIn = false)
+        public LoginPage Login(string url, bool staySignedIn = false)
         {
+            RunConfig.ChooseEnvironment();
+
+            DriverManager.Current.OpenUrl(url);
+
             EnterLogin(ConfigurationManager.AppSettings["BaseLogin"])
                 .EnterPassword(ConfigurationManager.AppSettings["BasePassword"])
                 .StaySigned(staySignedIn)
@@ -19,8 +24,12 @@ namespace Acme.UI
             return this;
         }
 
-        public LoginPage LoginAs(string username, string password, bool staySignedIn = false)
+        public LoginPage LoginAs(string url, string username, string password, bool staySignedIn = false)
         {
+            RunConfig.ChooseEnvironment();
+
+            DriverManager.Current.OpenUrl(url);
+
             EnterLogin(username)
                 .EnterPassword(password)
                 .StaySigned(staySignedIn)
