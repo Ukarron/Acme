@@ -13,7 +13,7 @@ namespace Acme.Test
     public abstract class BaseFixture<TBaseRepository> where TBaseRepository : BaseFixtureRepository
     {
         private const string BaseTestDataPath = "BaseFixtureData.json";
-        protected readonly string BaseUrl = "http://wordpress.ua/";
+        protected readonly string BaseUrl = RunConfig.ChooseLocalOrRemoteBaseUrl();
         protected abstract string FixtureTestDataPath { get; }
         protected TBaseRepository Repository { get; private set; }
         protected Client Client { get; private set; }        

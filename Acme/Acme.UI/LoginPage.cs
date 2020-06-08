@@ -12,7 +12,7 @@ namespace Acme.UI
 
         public LoginPage Login(string url, bool staySignedIn = false)
         {
-            RunConfig.ChooseEnvironment();
+            RunConfig.BrowserStart();
 
             DriverManager.Current.OpenUrl(url);
 
@@ -26,7 +26,7 @@ namespace Acme.UI
 
         public LoginPage LoginAs(string url, string username, string password, bool staySignedIn = false)
         {
-            RunConfig.ChooseEnvironment();
+            RunConfig.BrowserStart();
 
             DriverManager.Current.OpenUrl(url);
 

@@ -8,20 +8,35 @@ namespace Acme.Test
 
         public static string LocalUrl = "http://wordpress.ua/";
         public static string RemoteUrl = "http://192.168.0.76/";
-        public static bool RunRemotely = false;
+        public static bool RunLocally = true;
 
-        public static void ChooseEnvironment()
+        public static void BrowserStart()
         {
-            if (RunRemotely)
+            if (RunLocally)
             {
-                DriverManager.Current = Driver.GetForRemout();                
+                DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
+                
             }
             else
             {
-                DriverManager.Current = Driver.GetFor(BrowserType.Chrome);
+                DriverManager.Current = Driver.GetForRemout();
             }
 
             DriverManager.Current.MaximizeWindow();
+
+            ChooseLocalOrRemoteBaseUrl();
+        }
+
+        public static string ChooseLocalOrRemoteBaseUrl()
+        {
+            if (RunLocally)
+            {
+                return LocalUrl;
+            }
+            else
+            {
+                return RemoteUrl;
+            }
         }
     }
 }
